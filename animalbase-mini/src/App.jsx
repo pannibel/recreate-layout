@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import './App.css'
-import {getCleanData} from "./data";
+import { useState } from "react";
+import "./App.css";
+import { getCleanData } from "./data";
 
 const animals = getCleanData();
 
@@ -11,28 +11,42 @@ function App() {
   let filtered = animals;
   filtered.sort((a, b) => {
     if (a[sort] > b[sort]) {
-      return 1
-    };
+      return 1;
+    }
     if (a[sort] < b[sort]) {
-      return -1
-    };
+      return -1;
+    }
     return 0;
-  })
+  });
 
   if (filter) {
-    filtered = animals.filter(ani => ani.type === filter);
+    filtered = animals.filter((ani) => ani.type === filter);
   }
-
 
   return (
     <div className="App">
-
       <fieldset>
         <legend>Filters</legend>
-        <button className={filter === "dog" ? "active" : null} onClick={() => setFilter("dog")}>Dog</button>
-        <button className={filter === "cat" ? "active" : null} onClick={() => setFilter("cat")}>Cat</button>
-        <button className={filter === "dragon" ? "active" : null} onClick={() => setFilter("dragon")}>Dragon</button>
-        <button className={filter === "horse" ? "active" : null} onClick={() => setFilter("horse")}>Horse</button>
+        <button
+          className={filter === "dog" ? "active" : null}
+          onClick={() => setFilter("dog")}>
+          Dog
+        </button>
+        <button
+          className={filter === "cat" ? "active" : null}
+          onClick={() => setFilter("cat")}>
+          Cat
+        </button>
+        <button
+          className={filter === "dragon" ? "active" : null}
+          onClick={() => setFilter("dragon")}>
+          Dragon
+        </button>
+        <button
+          className={filter === "horse" ? "active" : null}
+          onClick={() => setFilter("horse")}>
+          Horse
+        </button>
       </fieldset>
 
       <fieldset>
@@ -54,21 +68,20 @@ function App() {
         </thead>
 
         <tbody>
-        {filtered.map(ani => {
-          return (
-            <tr>
-              <td>{ani.name}</td>
-              <td>{ani.type}</td>
-              <td>{ani.age}</td>
-              <td>{ani.description}</td>
-            </tr>
-          )
-        })}
+          {filtered.map((ani) => {
+            return (
+              <tr>
+                <td>{ani.name}</td>
+                <td>{ani.type}</td>
+                <td>{ani.age}</td>
+                <td>{ani.description}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
